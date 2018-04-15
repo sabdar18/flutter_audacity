@@ -38,6 +38,31 @@ _buildActionButtons() {
   ];
 }
 
+_buildQuizPage(BuildContext context){
+   return new ListView.builder(
+    padding: const EdgeInsets.all(8.0),
+    itemCount: 10,
+    itemBuilder: (BuildContext context, int index) {
+      return new Card(
+          child: new ListTile(
+        leading: new CircleAvatar(
+          child: new Text("A"),
+        ),
+        trailing: new IconButton(
+          icon: new Icon(
+            Icons.chevron_right,
+            size: 38.0,
+          ),
+          onPressed: () {},
+        ),
+        title: new Text("Quiz Name " + (index + 1).toString()),
+        subtitle: new Text(
+            "Moderator Name\nEnd Date " + (20 - index).toString() + "-04-2017"),
+      ));
+    },
+  );
+}
+
 
 class QuizPageState extends State<QuizPage>{
   @override
@@ -47,9 +72,7 @@ class QuizPageState extends State<QuizPage>{
         title: new Text(QUIZZES_TITLE),
         actions: _buildActionButtons(),
       ),
-      body: new Center(
-        child: new Text("Hello World"),
-      ),
+      body: _buildQuizPage(context),
        drawer: new MyDrawer(),
     );
   }
